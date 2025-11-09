@@ -84,3 +84,21 @@ function fadeInCards() {
 
 window.addEventListener("scroll", fadeInCards);
 fadeInCards(); // run on load
+
+
+// Fade-in gallery images on scroll
+const galleryItems = document.querySelectorAll(".gallery-item");
+
+function fadeInGallery() {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  galleryItems.forEach(item => {
+    const itemTop = item.getBoundingClientRect().top;
+    if (itemTop < triggerBottom) {
+      item.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", fadeInGallery);
+fadeInGallery(); // run on load
