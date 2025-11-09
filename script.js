@@ -108,3 +108,44 @@ if (galleryBtn) {
     alert("🖼️ Full gallery coming soon — site under construction!");
   });
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".review-card");
+  const dots = document.querySelectorAll(".dot");
+  const reviewsBtn = document.querySelector(".reviews-btn");
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active");
+      slide.style.zIndex = 0;
+    });
+    dots.forEach(dot => dot.classList.remove("active"));
+
+    slides[index].classList.add("active");
+    slides[index].style.zIndex = 1;
+    dots[index].classList.add("active");
+  }
+
+  showSlide(current);
+
+  // Auto-slide every 5 seconds
+  setInterval(() => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }, 5000);
+
+  // Dots click
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      current = i;
+      showSlide(current);
+    });
+  });
+
+  // CTA button alert
+  if (reviewsBtn) {
+    reviewsBtn.addEventListener("click", () => {
+      alert("📝 More reviews coming soon — site under construction!");
+    });
+  }
+});
