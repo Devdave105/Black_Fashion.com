@@ -261,3 +261,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+newsCards.forEach(card => {
+  card.addEventListener("click", () => {
+    if(isMobile()) {
+      const content = card.querySelector(".news-content");
+      const hint = card.querySelector(".tap-hint");
+
+      // Toggle overlay visibility
+      content.style.opacity = content.style.opacity === "1" ? "0" : "1";
+
+      // Hide the hint after first tap
+      if(hint) {
+        hint.style.display = "none";
+      }
+    }
+  });
+});
